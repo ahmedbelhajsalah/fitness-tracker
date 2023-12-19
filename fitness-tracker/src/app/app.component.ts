@@ -7,4 +7,8 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'fitness-tracker';
+
+  onClick(){
+    console.log(`the project ${this.title} has started`);
+  }
 }
