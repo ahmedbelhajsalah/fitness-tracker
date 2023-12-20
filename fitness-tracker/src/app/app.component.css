@@ -1,0 +1,45 @@
+mat-sidenav-container, mat-sidenav-content, mat-sidenav{
+    height: 100%;
+}
+
+.sidenavStyle{
+    display: flex;
+    flex: 1;
+    justify-content: flex-end;
+}
+
+.navigation-items{
+    gap: 10px;
+    display: flex;
+    list-style: none;
+}
+
+a{
+    text-decoration: none;
+    color: white;
+}
+
+a:hover, 
+a:active{
+    color: lightgray;
+}
+
+.list-item{
+    color: black;
+}
+
+.slide-caption{
+    margin-left: 5px;
+}
+
+@media only screen and (min-width: 600px){
+    .menu-button{
+        display: none;
+    }
+}
+
+@media only screen and (max-width: 600px){
+    .sidenavStyle{
+        display: none;
+    }
+}

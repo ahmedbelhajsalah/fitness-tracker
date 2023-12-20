@@ -1,1 +1,45 @@
-<router-outlet></router-outlet>
+<mat-sidenav-container>
+  <mat-sidenav #sidenav role="navigation">
+    <mat-nav-list>
+      <a (click)="sidenav.close()" mat-list-item routerLink="/signup">
+        <mat-icon>face</mat-icon>
+        <span class="slide-caption">signup</span>
+      </a>
+      <a (click)="sidenav.close()" mat-list-item routerLink="/login">
+        <mat-icon>input</mat-icon>
+        <span class="slide-caption">login</span>
+      </a>
+      <a (click)="sidenav.close()" mat-list-item routerLink="/training">
+        <mat-icon>fitness_center</mat-icon>
+        <span class="slide-caption">training</span>
+      </a>
+      <mat-list-item>
+        <button mat-icon-button >
+          <mat-icon>eject</mat-icon>
+          <span class="slide-caption">logout</span>
+        </button>
+      </mat-list-item>
+    </mat-nav-list>
+  </mat-sidenav>
+  <mat-sidenav-content>
+    <mat-toolbar color="primary">
+      <div class="menu-button">
+        <button mat-icon-button (click)="sidenav.toggle()">
+        <mat-icon>menu</mat-icon>
+      </button>
+    </div>
+      <div><a routerLink="/">LOGO</a></div>
+      <div class="sidenavStyle">
+        <ul class="navigation-items">
+          <li><a routerLink="/signup">signup</a></li>
+          <li><a routerLink="/login">login</a></li>
+          <li><a routerLink="/training">training</a></li>
+          <li>logout</li>
+        </ul>
+    </div>
+    </mat-toolbar>
+    <main>
+      <router-outlet></router-outlet>
+    </main>
+  </mat-sidenav-content>
+</mat-sidenav-container>
