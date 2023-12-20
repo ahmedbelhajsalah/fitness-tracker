@@ -1,0 +1,12 @@
+.form-class {
+    display: flex;
+    flex-direction: column;
+    align-items: center ;
+    margin-top: 200px;
+    gap: 20px;
+  }
+
+button.example-custom-date-class {
+    background: orange;
+    border-radius: 100%;
+  }
