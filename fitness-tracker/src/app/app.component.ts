@@ -7,8 +7,13 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'fitness-tracker';
+  openSidNav= false;
 
   onClick(){
     console.log(`the project ${this.title} has started`);
   }
+  onSideNavClick(){
+    this.openSidNav= !this.openSidNav;
+  }
+  
 }
