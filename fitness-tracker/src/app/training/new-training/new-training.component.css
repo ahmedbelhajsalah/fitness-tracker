@@ -1,0 +1,19 @@
+.newTrainingCard{
+    display:flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 5px;
+    flex: 0 0 400px;
+}
+
+.startWorkout{
+    align-items: center;
+    justify-content: center;
+    display: flex;
+}
+
+@media only screen and (max-width: 600px){
+    .newTrainingCard{
+        flex: 0 0 100%;
+    }
+}
