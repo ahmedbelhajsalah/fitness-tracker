@@ -1,0 +1,14 @@
+.welcome{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: row;
+    gap: 20px;
+    margin-top: 50px;
+}
+
+@media only screen and (max-width: 600px){
+    .welcome{
+        flex-direction: column;
+    }
+}

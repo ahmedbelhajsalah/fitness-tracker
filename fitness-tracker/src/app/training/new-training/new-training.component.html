@@ -1,1 +1,19 @@
-<p>new-training works!</p>
+<section class="newTrainingCard">
+    <mat-card class="newTrainingCard">
+        <div>
+            <mat-card-title class="startWorkout">Time to start a workout</mat-card-title>
+            <mat-card-content class="startWorkout">Select type of training</mat-card-content>
+            <mat-form-field class="startWorkout">
+                <mat-select name="training" placeholder="type of training">
+                    <mat-option value="type1" >type1</mat-option>
+                    <mat-option value="type2">type2</mat-option>
+                    <mat-option value="type3">type3</mat-option>
+                    <mat-option value="type4">type4</mat-option>
+                </mat-select>
+              </mat-form-field>
+            <mat-card-actions class="startWorkout">
+                <button type="submit" mat-button (click)="onStartClick()">Start</button>
+              </mat-card-actions>
+        </div>
+    </mat-card>
+</section>
