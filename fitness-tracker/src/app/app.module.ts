@@ -28,7 +28,8 @@ import { SidenavListComponent } from './navigation/sidenav-list/sidenav-list.com
 import {MatTabsModule} from '@angular/material/tabs';
 import {MatCardModule} from '@angular/material/card';
 import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
-
+import { StopDialogComponent } from './training/current-training/stop-dialog/stop-dialog.component';
+import {MatDialogModule} from '@angular/material/dialog';
 
 
 @NgModule({
@@ -43,6 +44,7 @@ import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
     WelcomeComponent,
     HeaderComponent,
     SidenavListComponent,
+    StopDialogComponent,
   ],
   imports: [
     BrowserModule,
@@ -62,7 +64,8 @@ import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
     MatListModule,
     MatTabsModule,
     MatCardModule,
-    MatProgressSpinnerModule
+    MatProgressSpinnerModule,
+    MatDialogModule
   ],
   providers: [],
   bootstrap: [AppComponent]

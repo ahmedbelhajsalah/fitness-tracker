@@ -16,4 +16,5 @@ export class TrainingComponent implements OnInit {
   onShowTraining(){
     this.showTraining = !this.showTraining;
   }
+
 }
