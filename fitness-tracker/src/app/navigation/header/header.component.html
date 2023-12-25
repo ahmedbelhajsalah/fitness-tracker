@@ -7,10 +7,10 @@
     <div><a routerLink="/">LOGO</a></div>
     <div class="sidenavStyle">
       <ul class="navigation-items">
-        <li><a routerLink="/signup">signup</a></li>
-        <li><a routerLink="/login">login</a></li>
-        <li><a routerLink="/training">training</a></li>
-        <li>logout</li>
+        <li *ngIf="!showTrainingAndLogout"><a routerLink="/signup">signup</a></li>
+        <li *ngIf="!showTrainingAndLogout"><a routerLink="/login">login</a></li>
+        <li *ngIf="showTrainingAndLogout"><a routerLink="/training">training</a></li>
+        <li *ngIf="showTrainingAndLogout"><a style="cursor: pointer;"  (click)="onLogout()">logout</a></li>
       </ul>
   </div>
   </mat-toolbar>
