@@ -1,0 +1,13 @@
+mat-form-field {
+    width: 300px;
+  }
+
+.loginStyle{
+    display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  gap: 30px;
+  margin-top: 5%;
+}
+  

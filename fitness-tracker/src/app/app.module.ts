@@ -30,6 +30,9 @@ import {MatCardModule} from '@angular/material/card';
 import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 import { StopDialogComponent } from './training/current-training/stop-dialog/stop-dialog.component';
 import {MatDialogModule} from '@angular/material/dialog';
+import { AuthService } from './auth/Auth.service';
+import { ReactiveFormsModule } from '@angular/forms';
+import { AuthGuard } from './auth/AuthGuard.service';
 
 
 @NgModule({
@@ -65,9 +68,10 @@ import {MatDialogModule} from '@angular/material/dialog';
     MatTabsModule,
     MatCardModule,
     MatProgressSpinnerModule,
-    MatDialogModule
+    MatDialogModule,
+    ReactiveFormsModule
   ],
-  providers: [],
+  providers: [AuthService,AuthGuard],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
