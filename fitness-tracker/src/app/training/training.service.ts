@@ -9,7 +9,7 @@ export class TrainingService{
         { id: 'crunches', name: 'Crunches', duration: 30, calories: 8 },
         { id: 'touch-toes', name: 'Touch Toes', duration: 180, calories: 15 },
         { id: 'side-lunges', name: 'Side Lunges', duration: 120, calories: 18 },
-        { id: 'burpees', name: 'Burpees', duration: 60, calories: 8 }
+        { id: 'burpees', name: 'Burpees', duration: 60, calories: 8 },
     ]
 
     exercises: Exercise[]= [];
@@ -24,7 +24,6 @@ export class TrainingService{
         this.runningExercise = this.availableExercices.find(ex => ex.name == selectedId) || null;
         if (this.runningExercise) {
             this.exerciseChnaged.next({...this.runningExercise});
-            console.log('heree', this.exerciseChnaged)
         }    
     }
 
@@ -36,7 +35,7 @@ export class TrainingService{
         if(this.runningExercise){
             this.exercises.push({ 
                 ...this.runningExercise,
-                date: new Date,
+                date: new Date(),
                 state: 'completed'
             })
         }
@@ -48,13 +47,17 @@ export class TrainingService{
         if(this.runningExercise){
             this.exercises.push({ 
                 ...this.runningExercise,
-                date: new Date,
+                date: new Date(),
                 duration:this.runningExercise.duration * (progress/100),
-                calories:this.runningExercise.duration * (progress/100),
+                calories:this.runningExercise.calories * (progress/100),
                 state: 'cancelled'
             })
         }
         this.runningExercise= null;
         this.exerciseChnaged.next(null);
+    }
+
+    getCompletedOrCanceledExercises(){
+        return this.exercises.slice();
     }
 }
