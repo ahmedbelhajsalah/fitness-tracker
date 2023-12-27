@@ -1,6 +1,8 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { StopDialogComponent } from './stop-dialog/stop-dialog.component';
+import { TrainingService } from '../training.service';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-current-training',
@@ -10,9 +12,11 @@ import { StopDialogComponent } from './stop-dialog/stop-dialog.component';
 export class CurrentTrainingComponent implements OnInit {
   @Input() progress = 0;
   timer: any;
-  @Output() goToTraining= new EventEmitter<void>();
 
-  constructor(private dialog: MatDialog) { }
+  constructor(private dialog: MatDialog, private trainingService: TrainingService) { }
+  exerciseSubscription!: Subscription;
+  duration = 0;
+  exerciseName='';
 
   ngOnInit(): void {
     this.startOrResumeInterval();
@@ -25,12 +29,18 @@ export class CurrentTrainingComponent implements OnInit {
   }
 
   startOrResumeInterval(){
+    let step = 0;
+    const runningExercise = this.trainingService.getRunningExercise();
+    if (runningExercise) {
+        step = (runningExercise.duration) / 100 * 1000;
+    }
     this.timer = setInterval(()=>{
       this.progress +=5;
       if(this.progress>=100){
+        this.trainingService.completeExercise();
         clearInterval(this.timer);
       }
-    }, 1000)
+    }, step)
   }
 
   stopInterval(){
@@ -48,8 +58,8 @@ export class CurrentTrainingComponent implements OnInit {
       dialogRef.afterClosed().subscribe(
         result => {
           if (result) {
+            this.trainingService.cancelExercise(this.progress);
             this.stopInterval();
-            this.goToTraining.emit();
           } else{
             this.startOrResumeInterval();
           }
