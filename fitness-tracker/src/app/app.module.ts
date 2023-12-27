@@ -33,7 +33,8 @@ import {MatDialogModule} from '@angular/material/dialog';
 import { AuthService } from './auth/Auth.service';
 import { ReactiveFormsModule } from '@angular/forms';
 import { AuthGuard } from './auth/AuthGuard.service';
-
+import { TrainingService } from './training/training.service';
+import {MatTableModule} from '@angular/material/table';
 
 @NgModule({
   declarations: [
@@ -69,9 +70,10 @@ import { AuthGuard } from './auth/AuthGuard.service';
     MatCardModule,
     MatProgressSpinnerModule,
     MatDialogModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    MatTableModule
   ],
-  providers: [AuthService,AuthGuard],
+  providers: [AuthService,AuthGuard, TrainingService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
