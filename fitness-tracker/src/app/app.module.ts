@@ -35,6 +35,8 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { AuthGuard } from './auth/AuthGuard.service';
 import { TrainingService } from './training/training.service';
 import {MatTableModule} from '@angular/material/table';
+import { MatSortModule} from '@angular/material/sort';
+import { MatPaginatorModule} from '@angular/material/paginator';
 
 @NgModule({
   declarations: [
@@ -71,7 +73,9 @@ import {MatTableModule} from '@angular/material/table';
     MatProgressSpinnerModule,
     MatDialogModule,
     ReactiveFormsModule,
-    MatTableModule
+    MatTableModule,
+    MatSortModule,
+    MatPaginatorModule
   ],
   providers: [AuthService,AuthGuard, TrainingService],
   bootstrap: [AppComponent]
