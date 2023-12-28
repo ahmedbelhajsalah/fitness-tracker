@@ -41,6 +41,7 @@ import { AngularFireModule } from "@angular/fire/compat";
 import { AngularFirestoreModule } from '@angular/fire/compat/firestore';
 import { environment } from 'src/environments/environment';
 import { TimestampToDatePipe } from './training/timestamp_todate';
+import { AngularFireAuthModule } from '@angular/fire/compat/auth';
 
 @NgModule({
   declarations: [
@@ -83,6 +84,7 @@ import { TimestampToDatePipe } from './training/timestamp_todate';
     MatPaginatorModule,
     AngularFireModule.initializeApp(environment.firebase),
     AngularFirestoreModule,
+    AngularFireAuthModule
   ],
   providers: [AuthService,AuthGuard, TrainingService],
   bootstrap: [AppComponent]

@@ -22,7 +22,7 @@ export class SidenavListComponent implements OnInit, OnDestroy {
 
   onLogout(){
     this.authService.logout();
-    this.onSideNavClick();
+    this.onSideNavClick()
   }
 
   ngOnDestroy() {
