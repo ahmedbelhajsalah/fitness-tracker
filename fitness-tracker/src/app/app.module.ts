@@ -37,6 +37,10 @@ import { TrainingService } from './training/training.service';
 import {MatTableModule} from '@angular/material/table';
 import { MatSortModule} from '@angular/material/sort';
 import { MatPaginatorModule} from '@angular/material/paginator';
+import { AngularFireModule } from "@angular/fire/compat";
+import { AngularFirestoreModule } from '@angular/fire/compat/firestore';
+import { environment } from 'src/environments/environment';
+import { TimestampToDatePipe } from './training/timestamp_todate';
 
 @NgModule({
   declarations: [
@@ -51,6 +55,7 @@ import { MatPaginatorModule} from '@angular/material/paginator';
     HeaderComponent,
     SidenavListComponent,
     StopDialogComponent,
+    TimestampToDatePipe
   ],
   imports: [
     BrowserModule,
@@ -75,7 +80,9 @@ import { MatPaginatorModule} from '@angular/material/paginator';
     ReactiveFormsModule,
     MatTableModule,
     MatSortModule,
-    MatPaginatorModule
+    MatPaginatorModule,
+    AngularFireModule.initializeApp(environment.firebase),
+    AngularFirestoreModule,
   ],
   providers: [AuthService,AuthGuard, TrainingService],
   bootstrap: [AppComponent]
