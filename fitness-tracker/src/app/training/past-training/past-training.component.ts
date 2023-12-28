@@ -1,9 +1,8 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import {MatTableDataSource, MatTableModule} from '@angular/material/table';
+import {MatTableDataSource} from '@angular/material/table';
 import { TrainingService } from '../training.service';
 import { Exercise } from '../exercise.model';
 import { MatSort } from '@angular/material/sort';
-import { Form } from '@angular/forms';
 import { MatPaginator } from '@angular/material/paginator';
 
 @Component({
@@ -12,7 +11,6 @@ import { MatPaginator } from '@angular/material/paginator';
   styleUrls: ['./past-training.component.css']
 })
 export class PastTrainingComponent implements OnInit {
-  exercices: Exercise[] = this.trainingService.getCompletedOrCanceledExercises();
   dataSource = new MatTableDataSource<Exercise>()
   @ViewChild(MatSort) sort!: MatSort;
   @ViewChild(MatPaginator) paginator!: MatPaginator;
@@ -20,7 +18,11 @@ export class PastTrainingComponent implements OnInit {
   constructor(private trainingService: TrainingService) { }
 
   ngOnInit(): void {
-    this.dataSource.data = this.exercices;
+    this.trainingService.finishedExercisesChanged.subscribe(exercise=>{
+      this.dataSource.data = exercise;
+    })
+    this.trainingService.fetchCompletedOrCanceledExercises();
+    
   }
   ngAfterViewInit() {
     this.dataSource.sort = this.sort;
