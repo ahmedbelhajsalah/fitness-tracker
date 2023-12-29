@@ -42,6 +42,8 @@ import { AngularFirestoreModule } from '@angular/fire/compat/firestore';
 import { environment } from 'src/environments/environment';
 import { TimestampToDatePipe } from './training/timestamp_todate';
 import { AngularFireAuthModule } from '@angular/fire/compat/auth';
+import {MatSnackBarModule} from '@angular/material/snack-bar';
+import { UISHARED } from './shared/uishared.service';
 
 @NgModule({
   declarations: [
@@ -84,9 +86,10 @@ import { AngularFireAuthModule } from '@angular/fire/compat/auth';
     MatPaginatorModule,
     AngularFireModule.initializeApp(environment.firebase),
     AngularFirestoreModule,
-    AngularFireAuthModule
+    AngularFireAuthModule,
+    MatSnackBarModule
   ],
-  providers: [AuthService,AuthGuard, TrainingService],
+  providers: [AuthService,AuthGuard, TrainingService, UISHARED],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

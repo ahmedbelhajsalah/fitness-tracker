@@ -1,7 +1,8 @@
 import { Subject, Subscription, map } from "rxjs";
 import { Exercise } from "./exercise.model";
-import { Injectable } from "@angular/core";
+import { Injectable, enableProdMode } from "@angular/core";
 import { AngularFirestore } from "@angular/fire/compat/firestore";
+import { UISHARED } from "../shared/uishared.service";
 
 @Injectable()
 export class TrainingService{
@@ -9,15 +10,16 @@ export class TrainingService{
     private availableExercices : Exercise[] = []
     private sub: Subscription[] = [];
 
-    constructor(private db: AngularFirestore){}
+    constructor(private db: AngularFirestore, private uiSharedSevice: UISHARED){}
 
     exercises: Exercise[]= [];
-    onExerciseChanged = new Subject<Exercise[]>();
+    onExerciseChanged = new Subject<Exercise[] | null>();
     finishedExercisesChanged = new Subject<Exercise[]>();
 
     private runningExercise: Exercise | null = null;
 
     fetchAvailableExercices(){
+        this.uiSharedSevice.onLoadingChanged.next(true);
         this.sub.push(this.db.collection('availableExercises')
                 .snapshotChanges().pipe(map(
                     docArray => {
@@ -34,7 +36,12 @@ export class TrainingService{
                     }
                 )).subscribe((exercice: Exercise[]) => {
                     this.availableExercices = exercice;
-                    this.onExerciseChanged.next([...this.availableExercices])
+                    this.onExerciseChanged.next([...this.availableExercices]);
+                    this.uiSharedSevice.onLoadingChanged.next(false);
+        }, error => {
+            this.uiSharedSevice.onLoadingChanged.next(false);
+            this.uiSharedSevice.openSnackBar('falied to fetch data, please try again', undefined, 4000);
+            this.onExerciseChanged.next(null);
         }));
     }
 
